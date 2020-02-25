@@ -2,6 +2,20 @@
 
 Work in progress
 
+### Differences from Vessel
+
+// TODO
+
+### Differences from Laradock
+
+// TODO
+
+## Requirements
+
+Laravel, Docker and docker-compose.
+
+Works great on Linux but needs testing on Windows and Mac.
+
 ## Installation
 
 You can install the package via composer:
