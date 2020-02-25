@@ -3,7 +3,7 @@
 return [
 
     'env' => [
-        'DATA_PATH_HOST'     => './',
+        'DATA_PATH_HOST'     => env( 'CHISEL_DATA_PATH', '~/.chisel/' ),
         'APP_CODE_PATH_HOST' => './',
         'DOCKER_HOST_IP'     => '172.17.0.1',
         'TIMEZONE'           => config( 'app.timezone' ),
@@ -41,8 +41,7 @@ return [
                 'PHP_IMAGE_PATH' => base_path( 'vendor/afterflow/chisel/docker/php-fpm/' ),
             ],
         ],
-
-        'caddy' => [
+        'caddy'      => [
             'file' => base_path( 'vendor/afterflow/chisel/docker/caddy/docker-compose.yml' ),
             'env'  => [
                 'CADDY_IMAGE_PATH'      => base_path( 'vendor/afterflow/chisel/docker/caddy/' ),

@@ -4,6 +4,7 @@ namespace Afterflow\Chisel;
 
 use Afterflow\Chisel\Console\Down;
 use Afterflow\Chisel\Console\Exec;
+use Afterflow\Chisel\Console\Logs;
 use Afterflow\Chisel\Console\Ps;
 use Afterflow\Chisel\Console\Restart;
 use Afterflow\Chisel\Console\Up;
@@ -27,7 +28,15 @@ class ChiselServiceProvider extends ServiceProvider {
             ], 'config' );
         }
 
-        $this->commands( [ Up::class, Down::class, Workspace::class, Exec::class, Ps::class, Restart::class ] );
+        $this->commands( [
+            Up::class,
+            Down::class,
+            Workspace::class,
+            Exec::class,
+            Ps::class,
+            Restart::class,
+            Logs::class,
+        ] );
 
     }
 
