@@ -19,7 +19,7 @@ class Workspace extends Command {
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Start a bash session on the workspace';
 
     /**
      * Create a new command instance.

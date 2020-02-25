@@ -9,6 +9,11 @@ return [
         'TIMEZONE'           => config( 'app.timezone' ),
     ],
 
+    'database_connection_override' => [
+        'host' => 'mysql',
+        'port' => 3306,
+    ],
+
     'services' => [
         'mysql'      => [
             'file' => base_path( 'vendor/afterflow/chisel/docker/mysql/docker-compose.yml' ),

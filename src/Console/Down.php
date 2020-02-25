@@ -19,7 +19,7 @@ class Down extends Command {
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Stop all services';
 
     /**
      * Create a new command instance.

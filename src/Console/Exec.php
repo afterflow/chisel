@@ -6,20 +6,20 @@ use Afterflow\Chisel\Chisel;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 
-class Up extends Command {
+class Exec extends Command {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'chisel:up';
+    protected $signature = 'chisel:exec {container : "e.g. caddy"} {cmd : "linux command"} {--i|interactive : For interactive shell}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Start all services';
+    protected $description = 'Execute docker-compose command on container';
 
     /**
      * Create a new command instance.
@@ -37,7 +37,7 @@ class Up extends Command {
      */
     public function handle() {
 
-        Chisel::up();
+        Chisel::exec( 'exec ' . $this->argument( 'container' ) . ' ' . $this->argument( 'cmd' ), $this->option( 'interactive' ) );
 
     }
 }
