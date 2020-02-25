@@ -1,0 +1,19 @@
+version: '3'
+services:
+  phpmyadmin:
+    build:
+      context: ${PMA_IMAGE_PATH}
+      args:
+        - MSQT=${PMA_MYSQL_HOST}
+    environment:
+      - PMA_ARBITRARY=1
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "${PMA_PORT}:80"
+    depends_on:
+      - "mysql"
+    networks:
+      - frontend
+      - backend

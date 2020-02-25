@@ -1,0 +1,18 @@
+0.0.0.0:80,
+import extra_vhosts
+root /var/www/public
+fastcgi / php-fpm:9000 php {
+    index index.php
+}
+
+rewrite {
+    to {path} {path}/ /index.php?{query}
+    }
+
+gzip
+log / /var/log/caddy/access.log "{when} {remote} {method} {host} {uri} {proto} {status} {size} {latency}"
+errors /var/log/caddy/error.log
+
+tls {
+  max_certs 9000
+}

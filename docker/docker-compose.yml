@@ -1,0 +1,25 @@
+version: '3'
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+volumes:
+  caddy:
+    driver: local
+  mysql:
+    driver: local
+  phpmyadmin:
+    driver: local
+
+services:
+  workspace:
+    image: exbox/workspace:4.0
+    volumes:
+      - ${APP_CODE_PATH_HOST}:/var/www:cached
+    extra_hosts:
+      - "dockerhost:${DOCKER_HOST_IP}"
+    tty: true
+    networks:
+      - frontend
+      - backend
