@@ -3,6 +3,7 @@
     "description": "Work in progress",
     "type": "library",
     "license": "MIT",
+    "bin": "bin/chisel",
     "authors": [
         {
             "name": "Vladislav",

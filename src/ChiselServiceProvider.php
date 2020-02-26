@@ -2,6 +2,7 @@
 
 namespace Afterflow\Chisel;
 
+use Afterflow\Chisel\Console\Compose;
 use Afterflow\Chisel\Console\Down;
 use Afterflow\Chisel\Console\Exec;
 use Afterflow\Chisel\Console\Logs;
@@ -33,6 +34,7 @@ class ChiselServiceProvider extends ServiceProvider {
             Down::class,
             Workspace::class,
             Exec::class,
+            Compose::class,
             Ps::class,
             Restart::class,
             Logs::class,

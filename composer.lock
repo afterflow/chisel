@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15680195218303d0e141d98eacff09a1",
+    "content-hash": "dab5d12b5c2c4802f206fee5cefc1914",
     "packages": [
         {
             "name": "afterflow/recipe",
@@ -120,7 +120,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v6.16.0",
+            "version": "v6.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -164,7 +164,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v6.16.0",
+            "version": "v6.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -208,7 +208,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v6.16.0",
+            "version": "v6.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -253,16 +253,16 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v6.16.0",
+            "version": "v6.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "58c1d87e80f72bc09201107553a08471577fbe79"
+                "reference": "799a3af9435458d56e9f3647e09e11ffc9ace896"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/58c1d87e80f72bc09201107553a08471577fbe79",
-                "reference": "58c1d87e80f72bc09201107553a08471577fbe79",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/799a3af9435458d56e9f3647e09e11ffc9ace896",
+                "reference": "799a3af9435458d56e9f3647e09e11ffc9ace896",
                 "shasum": ""
             },
             "require": {
@@ -301,20 +301,20 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2020-01-28T14:30:01+00:00"
+            "time": "2020-02-25T14:02:04+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v6.16.0",
+            "version": "v6.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "2f5f449750e6821f2d8c4e993a4ff77c7d7d5cc8"
+                "reference": "468b76701a1caf8859b2af7c770a3f293c4f065b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/2f5f449750e6821f2d8c4e993a4ff77c7d7d5cc8",
-                "reference": "2f5f449750e6821f2d8c4e993a4ff77c7d7d5cc8",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/468b76701a1caf8859b2af7c770a3f293c4f065b",
+                "reference": "468b76701a1caf8859b2af7c770a3f293c4f065b",
                 "shasum": ""
             },
             "require": {
@@ -362,11 +362,11 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2020-02-14T14:20:14+00:00"
+            "time": "2020-02-24T17:34:22+00:00"
         },
         {
             "name": "illuminate/view",
-            "version": "v6.16.0",
+            "version": "v6.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -792,55 +792,6 @@
             "time": "2020-01-13T11:15:53+00:00"
         },
         {
-            "name": "symfony/process",
-            "version": "v5.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "f9ffd870f5ac01abec7b2b5e15f904ca9400ecd1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/f9ffd870f5ac01abec7b2b5e15f904ca9400ecd1",
-                "reference": "f9ffd870f5ac01abec7b2b5e15f904ca9400ecd1",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Process Component",
-            "homepage": "https://symfony.com",
-            "time": "2020-01-09T09:53:06+00:00"
-        },
-        {
             "name": "symfony/translation",
             "version": "v5.0.4",
             "source": {
@@ -1236,16 +1187,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "5.0.0",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "a48807183a4b819072f26e347bbd0b5199a9d15f"
+                "reference": "cd72d394ca794d3466a3b2fc09d5a6c1dc86b47e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/a48807183a4b819072f26e347bbd0b5199a9d15f",
-                "reference": "a48807183a4b819072f26e347bbd0b5199a9d15f",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/cd72d394ca794d3466a3b2fc09d5a6c1dc86b47e",
+                "reference": "cd72d394ca794d3466a3b2fc09d5a6c1dc86b47e",
                 "shasum": ""
             },
             "require": {
@@ -1285,7 +1236,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2020-02-09T09:16:15+00:00"
+            "time": "2020-02-22T12:28:44+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
