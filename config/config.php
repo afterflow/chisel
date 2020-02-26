@@ -46,20 +46,19 @@ return [
     |
     | This section describes local, production and common containers of your
     | application. You can add arbitrary Docker containers or override the
-    | defaults.
+    | defaults. Section name matches environment. Add 'staging' section
+    | for staging or whatever you like to match your current env.
     |
     */
 
     'services' => [
+
+        /*
+         Common Services
+         Here are must-have containers that run regardless of environment.
+        */
+
         'common' => [
-
-            /*
-
-             Common Services
-             Here are must-have containers that run regardless of environment.
-
-            */
-
             'mysql'      => [
                 'file' => base_path( 'vendor/afterflow/chisel/docker/mysql/docker-compose.yml' ),
                 'env'  => [
@@ -116,30 +115,22 @@ return [
         ],
 
         /*
-
          Local Services
          These containers will only exist in a local environment. Add mailtrap, selenium, etc.
-
         */
 
         'local' => [
-            /**
-             * Define any local-specific containers
-             */
+            //
         ],
 
 
         /*
-
          Production Services
          These containers will only exist on production environment.
-
         */
 
         'production' => [
-            /**
-             * Define any production-specific containers
-             */
+            //
         ],
 
 
