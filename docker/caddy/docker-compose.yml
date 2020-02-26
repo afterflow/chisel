@@ -6,7 +6,8 @@ services:
     volumes:
       - /mnt:/mnt
       - ${APP_CODE_PATH_HOST}:/var/www:cached
-      - ${CADDY_IMAGE_PATH}/caddy:/etc/caddy
+      - ${CADDY_IMAGE_PATH}/config/Caddyfile:/etc/caddy/Caddyfile
+      - ${CADDY_VHOSTS_FILE}:/etc/caddy/vhosts
       - ${CADDY_HOST_LOG_PATH}:/var/log/caddy
       - ${DATA_PATH_HOST}:/root/.caddy
     ports:

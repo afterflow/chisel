@@ -4,6 +4,7 @@
 namespace Afterflow\Chisel;
 
 
+use Illuminate\Support\Arr;
 use Symfony\Component\Process\Process;
 
 class Chisel {
@@ -22,10 +23,23 @@ class Chisel {
 
         $env   = collect( config( 'chisel.env' ) );
         $files = collect( [ __DIR__ . '/../docker/docker-compose.yml' ] );
-        collect( config( 'chisel.services' ) )->each( function ( $s ) use ( $files, &$env ) {
-            $env = $env->replace( $s[ 'env' ] );
-            $files = $files->push( $s[ 'file' ] );
-        } );
+        collect( config( 'chisel.services.common' ) )
+            ->merge( config( 'chisel.services.' . app()->environment() ) )
+            ->each( function ( $s ) use ( $files, &$env ) {
+
+                $dockerSettings = [
+                    'env'  => Arr::get( $s, 'env', [] ),
+                    'file' => Arr::get( $s, 'file', false ),
+                ];
+
+                if ( $class = Arr::get( $s, 'service' ) ) {
+                    $dockerSettings = app( $class )->configure( Arr::get( $s, 'params' ) );
+                }
+
+                $env = $env->replace( $dockerSettings[ 'env' ] );
+                $files->push( $dockerSettings[ 'file' ] );
+
+            } );
 
         $envLine = collect( $env )->map( function ( $v, $k ) {
             return $k . '=' . $v;

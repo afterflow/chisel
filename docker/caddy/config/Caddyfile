@@ -1,5 +1,4 @@
-0.0.0.0:80,
-import extra_vhosts
+import vhosts
 root /var/www/public
 fastcgi / php-fpm:9000 php {
     index index.php

@@ -1,6 +1,6 @@
-FROM exbox/caddy:4.0-beta
+FROM abiosoft/caddy:no-stats
+
+CMD ["--conf", "/etc/caddy/Caddyfile", "--log", "stdout", "--agree=true"]
 
 EXPOSE 80 443 2015
 WORKDIR /var/www/public
-
-CMD ["/usr/bin/caddy", "-conf", "/etc/caddy/Caddyfile","-agree"]
