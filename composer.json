@@ -23,6 +23,9 @@
             "Afterflow\\Chisel\\Tests\\": "tests/"
         }
     },
+    "suggest": {
+        "ext-pcntl": "*"
+    },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "check-style": "phpcs -p --standard=PSR12 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
