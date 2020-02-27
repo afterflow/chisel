@@ -15,7 +15,7 @@ return [
     */
 
     'env' => [
-        'DATA_PATH_HOST'     => env( 'CHISEL_DATA_PATH', '~/.chisel/' ),
+        'DATA_PATH_HOST'     => env( 'CHISEL_DATA_PATH', '~/.chisel/' . basename( base_path() ) ),
         'APP_CODE_PATH_HOST' => './',
         'DOCKER_HOST_IP'     => '172.17.0.1',
         'TIMEZONE'           => config( 'app.timezone' ),
