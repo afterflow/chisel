@@ -37,7 +37,7 @@ class Workspace extends Command {
      */
     public function handle() {
 
-        Chisel::exec( 'exec workspace bash', true );
+        Chisel::exec( 'exec workspace bash', false );
 
         //        `$compiledString`;
 

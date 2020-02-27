@@ -6,20 +6,20 @@ use Afterflow\Chisel\Chisel;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 
-class Compose extends Command {
+class Raw extends Command {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'chisel:compose {cmd : "compose command"} {--n|no-interaction : Non-interactive shell}';
+    protected $signature = 'chisel:raw {cmd?} {--n|no-interaction : Non-interactive shell}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Execute docker-compose command as is';
+    protected $description = 'Compile docker-compose string and spit it out';
 
     /**
      * Create a new command instance.
@@ -28,6 +28,7 @@ class Compose extends Command {
      */
     public function __construct() {
         parent::__construct();
+        $this->setHidden( true );
     }
 
     /**
@@ -36,8 +37,6 @@ class Compose extends Command {
      * @return mixed
      */
     public function handle() {
-
-        Chisel::exec( $this->argument( 'cmd' ), $this->option( 'no-interaction' ) );
-
+        echo Chisel::compile( $this->argument( 'cmd' ),true );
     }
 }

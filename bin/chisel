@@ -13,11 +13,10 @@ $cmd = array_shift( $argline );
 
 $argline = implode( ' ', $argline );
 
-
 if ( in_array( $cmd, [ 'up', 'restart', 'workspace' ] ) ) {
     $_SERVER[ 'argv' ] = [ "artisan", "chisel:" . $cmd, $argline ? $argline : null ];
 } else {
-    $_SERVER[ 'argv' ] = [ "artisan", "chisel:compose", $argline, ];
+    $_SERVER[ 'argv' ] = [ "artisan", "chisel:compose", $cmd . ( $argline ? ' ' . $argline : null ) ];
 }
 
 

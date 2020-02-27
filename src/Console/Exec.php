@@ -12,7 +12,7 @@ class Exec extends Command {
      *
      * @var string
      */
-    protected $signature = 'chisel:exec {container : "e.g. caddy"} {cmd : "linux command"} {--i|interactive : For interactive shell}';
+    protected $signature = 'chisel:exec {container : "e.g. caddy"} {cmd : "linux command"} {--n|no-interaction : Non-interactive shell}';
 
     /**
      * The console command description.
@@ -36,8 +36,6 @@ class Exec extends Command {
      * @return mixed
      */
     public function handle() {
-
-        Chisel::exec( 'exec ' . $this->argument( 'container' ) . ' ' . $this->argument( 'cmd' ), $this->option( 'interactive' ) );
-
+        Chisel::exec( 'exec ' . ( $this->option( 'no-interaction' ) ? '-T ' : '' ) . $this->argument( 'container' ) . ' ' . $this->argument( 'cmd' ), $this->option( 'no-interaction' ) );
     }
 }
