@@ -4,12 +4,20 @@
 namespace Afterflow\Chisel\Docker\Services;
 
 
+use Afterflow\Chisel\Docker\Services\Concerns\PublishesFixtures;
+
 class Workspace extends Service {
+
+    use PublishesFixtures;
 
     protected $image = 'exbox/workspace:4.0';
     protected $name = 'workspace';
     protected $networks = [ 'frontend', 'backend' ];
     protected $custom = [ 'tty' => true ];
+
+    public function register() {
+        $this->publishesFixtures( __DIR__ . '/fixtures' );
+    }
 
     public function configure() {
 

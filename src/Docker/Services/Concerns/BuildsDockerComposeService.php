@@ -93,6 +93,61 @@ trait BuildsDockerComposeService {
 
     //
 
+    public function toCompose() {
+
+        $compose = [];
+
+        if ( $this->image ) {
+            $compose[ 'image' ] = $this->image;
+        } elseif ( $this->context ) {
+            $compose[ 'context' ] = $this->context;
+        }
+        if ( $this->env ) {
+            $compose[ 'environment' ] = $this->concat( $this->env, '=' );
+        }
+
+        if ( $this->ports ) {
+            $compose[ 'ports' ] = $this->concat( $this->ports );
+        }
+
+        if ( $this->volumes ) {
+            $compose[ 'volumes' ] = $this->concat( $this->volumes );
+        }
+
+
+        if ( $this->depends ) {
+            $compose[ 'depends_on' ] = $this->depends;
+        }
+
+        $compose = $this->mapOptions( $compose, [
+            'networks',
+            'restart',
+            'expose',
+            'command',
+        ] );
+
+        $compose = array_replace( $compose, $this->custom );
+
+        return $compose;
+    }
+
+    protected function mapOptions( $compose, array $names ) {
+        foreach ( $names as $name ) {
+            if ( $this->$name ) {
+                $compose[ $name ] = $this->$name;
+            }
+        }
+
+        return $compose;
+    }
+
+    protected function concat( $arr, $sign = ':' ) {
+
+        return collect( $arr )->map( function ( $v, $k ) use ( $sign ) {
+            return $k . $sign . $v;
+        } )->values()->toArray();
+    }
+
     /**
      * @param string $name
      *
@@ -220,7 +275,7 @@ trait BuildsDockerComposeService {
      * @return BuildsDockerComposeService
      */
     public function command( $command ) {
-        $this->command = $command;
+        $this->command = is_array( $command ) ? json_encode( $command ) : $command;
 
         return $this;
     }

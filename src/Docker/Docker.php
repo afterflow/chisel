@@ -9,8 +9,13 @@ use Afterflow\Chisel\Docker\Services\Workspace;
 
 class Docker {
 
-    public function network() {
+    protected $networks = [];
+    protected $services = [];
 
+    public function network( $network, $driver = 'bridge' ) {
+        $this->networks [ $network ] = [
+            'driver' => $driver,
+        ];
     }
 
     public function workspace() {
@@ -20,7 +25,21 @@ class Docker {
         return $service;
     }
 
-    public function service( string $string, Service $service ) {
+    public function getService( $name ) {
+        return $this->services[ $name ];
+    }
 
+    public function service( string $name, Service $service ) {
+        $this->services[ $name ] = $service->name( $name );
+    }
+
+    public function toCompose() {
+        $compose = [
+            'version'  => '3',
+            'networks' => $this->networks,
+            'services' => collect( $this->services )->map->toCompose(),
+        ];
+
+        return $compose;
     }
 }

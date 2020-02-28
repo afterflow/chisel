@@ -4,14 +4,31 @@
 namespace Afterflow\Chisel;
 
 
+use Afterflow\Chisel\Docker\Docker;
+use Symfony\Component\Yaml\Yaml;
+
 class Chisel {
+
+    public static function load() {
+        self::requireConfiguration();
+    }
 
     public static function exec( $subcommand, $noInteraction = false ) {
 
-        self::requireConfiguration();
 
         // Build compose file
 
+        /**
+         * @var $docker Docker
+         */
+        $docker = app( 'docker' );
+
+        $compose = $docker->toCompose();
+        $yaml    = Yaml::dump( $compose, 10, 2 );
+
+        //        dump( $yaml );
+
+        file_put_contents( storage_path( 'framework/chisel-docker-compose.yml' ), $yaml );
 
         // Build command
         $base_command = self::generateBaseCommand();
