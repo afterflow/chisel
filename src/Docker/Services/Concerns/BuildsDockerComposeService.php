@@ -92,6 +92,20 @@ trait BuildsDockerComposeService {
     protected $command;
 
     //
+    public function toArray() {
+        return $this->mapOptions( [], [
+            'image',
+            'networks',
+            'restart',
+            'expose',
+            'command',
+            'depends',
+            'env',
+            'ports',
+            'networks',
+            'volumes',
+        ] );
+    }
 
     public function toCompose() {
 

@@ -6,6 +6,7 @@ namespace Afterflow\Chisel\Docker\Services;
 
 use Afterflow\Chisel\Docker\Services\Concerns\BuildsDockerComposeService;
 use Afterflow\Chisel\Docker\Services\Concerns\PublishesFixtures;
+use Illuminate\Support\Arr;
 
 class Service {
     use BuildsDockerComposeService;
@@ -19,6 +20,20 @@ class Service {
         }
 
         return $this->configure();
+    }
+
+    public function state() {
+        $dockerName = basename( base_path() ) . '_' . $this->name . '_1';
+        $r          = `docker ps -f name=$dockerName`;
+        $r          = explode( PHP_EOL, $r );
+        array_shift( $r );
+        $r = array_shift( $r );
+        $r = preg_split( '~\s{2,1000}~ims', $r );
+
+        //        dd($r);
+        return ($f = Arr::get( $r, 4, false ) ) ? '<fg=green>'.$f.'</>' : '<fg=red>Down</>';
+        //        $r = array_pop($r);
+        //        dd($r);
     }
 
     public static function make( $image = null ) {

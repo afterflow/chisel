@@ -7,6 +7,7 @@ use Afterflow\Chisel\Console\Down;
 use Afterflow\Chisel\Console\Exec;
 use Afterflow\Chisel\Console\Install;
 use Afterflow\Chisel\Console\Logs;
+use Afterflow\Chisel\Console\Main;
 use Afterflow\Chisel\Console\Ps;
 use Afterflow\Chisel\Console\Publish;
 use Afterflow\Chisel\Console\Raw;
@@ -53,6 +54,7 @@ class ChiselServiceProvider extends ServiceProvider {
         $this->commands( [
             Workspace::class,
             Publish::class,
+            Main::class,
             Compose::class,
             Restart::class,
             Install::class,

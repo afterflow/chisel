@@ -12,7 +12,7 @@ class Publish extends Command {
      *
      * @var string
      */
-    protected $signature = 'chisel:publish {service : Service name, e.g. mysql}';
+    protected $signature = 'chisel:publish {service? : Service name, e.g. mysql}';
 
     /**
      * The console command description.
@@ -41,12 +41,22 @@ class Publish extends Command {
      * @return mixed
      */
     public function handle() {
-        $name = $this->argument( 'service' );
+
+        $services = Chisel::load();
+
+        if ( ! $name = $this->argument( 'service' ) ) {
+
+            $name = $this->choice( 'Services with registered fixtures:', collect( $services )->filter( function ( $v ) {
+                return method_exists( $v, 'fixture' );
+            } )->keys()->toArray() );
+
+        }
+
         $this->line( 'Publishing fixtures from ' . $name );
 
-        Chisel::load();
 
-        $service = app( 'docker' )->getService( $name );
+        $service = $services[ $name ];
+
         if ( ! method_exists( $service, 'fixture' ) ) {
             throw new \Exception( 'Service does not have fixtures to publish' );
         }

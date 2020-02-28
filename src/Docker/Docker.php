@@ -29,6 +29,10 @@ class Docker {
         return $this->services[ $name ];
     }
 
+    public function services() {
+        return $this->services;
+    }
+
     public function service( string $name, Service $service ) {
         $this->services[ $name ] = $service->name( $name );
     }

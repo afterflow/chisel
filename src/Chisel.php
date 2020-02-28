@@ -11,6 +11,7 @@ class Chisel {
 
     public static function load() {
         self::requireConfiguration();
+        return app('docker')->services();
     }
 
     public static function exec( $subcommand, $noInteraction = false ) {
