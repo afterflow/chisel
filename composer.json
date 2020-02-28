@@ -41,7 +41,10 @@
         "laravel": {
             "providers": [
                 "Afterflow\\Chisel\\ChiselServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Docker": "Afterflow\\Chisel\\Docker\\Facade"
+            }
         }
     }
 }

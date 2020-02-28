@@ -26,9 +26,9 @@ class Install extends Command {
      */
     public function __construct() {
 
-        if ( file_exists( base_path( 'docker/docker.php' ) ) ) {
-            $this->hidden = true;
-        }
+//        if ( file_exists( base_path( 'docker/docker.php' ) ) ) {
+//            $this->hidden = true;
+//        }
 
         parent::__construct();
     }

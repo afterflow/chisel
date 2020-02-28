@@ -11,6 +11,7 @@
 |
 */
 
+
 Docker::network( 'frontend' );
 Docker::network( 'backend' );
 
@@ -41,4 +42,4 @@ Docker::workspace()->networks( [ 'frontend', 'backend' ] );
 |
 */
 
-Docker::service( 'php-fpm' );
+//Docker::service( 'php-fpm' );

@@ -79,7 +79,7 @@ class ShellCommand {
             }
         } else {
             if ( $pid = pcntl_fork() ) {
-                pcntl_exec( $this->getCommand() );
+                pcntl_exec( $this->getCommand()[ 0 ], array_slice( $this->getCommand(), 1 ) );
             }
         }
 

@@ -12,6 +12,7 @@ use Afterflow\Chisel\Console\Raw;
 use Afterflow\Chisel\Console\Restart;
 use Afterflow\Chisel\Console\Up;
 use Afterflow\Chisel\Console\Workspace;
+use Afterflow\Chisel\Docker\Docker;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,6 +23,25 @@ class ChiselServiceProvider extends ServiceProvider {
      * @return  void
      */
     public function register() {
+
+        $this->app->singleton( 'docker', function () {
+            return $this->app->make( Docker::class );
+        } );
+
+
+    }
+
+    public function runningInDocker() {
+
+        return @file_exists( '/.dockerenv' );
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return  void
+     */
+    public function boot() {
 
         if ( $this->app->runningInConsole() ) {
             $this->publishes( [
@@ -41,20 +61,6 @@ class ChiselServiceProvider extends ServiceProvider {
             Up::class,
             Ps::class,
         ] );
-
-    }
-
-    public function runningInDocker() {
-
-        return @file_exists( '/.dockerenv' );
-    }
-
-    /**
-     * Bootstrap services.
-     *
-     * @return  void
-     */
-    public function boot() {
 
         $this->mergeConfigFrom( __DIR__ . '/../config/config.php', 'chisel' );
 

@@ -98,7 +98,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function name( string $name ): BuildsDockerComposeService {
+    public function name( string $name ) {
         $this->name = $name;
 
         return $this;
@@ -109,7 +109,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function volumes( array $volumes ): BuildsDockerComposeService {
+    public function volumes( array $volumes ) {
         $this->volumes = $volumes;
 
         return $this;
@@ -120,7 +120,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function ports( array $ports ): BuildsDockerComposeService {
+    public function ports( array $ports ) {
         $this->ports = $ports;
 
         return $this;
@@ -131,7 +131,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function expose( array $expose ): BuildsDockerComposeService {
+    public function expose( array $expose ) {
         $this->expose = $expose;
 
         return $this;
@@ -142,7 +142,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function env( array $env ): BuildsDockerComposeService {
+    public function env( array $env ) {
         $this->env = $env;
 
         return $this;
@@ -153,7 +153,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function networks( array $networks ): BuildsDockerComposeService {
+    public function networks( array $networks ) {
         $this->networks = $networks;
 
         return $this;
@@ -164,7 +164,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function depends( array $depends ): BuildsDockerComposeService {
+    public function depends( array $depends ) {
         $this->depends = $depends;
 
         return $this;
@@ -175,7 +175,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function restart( string $restart ): BuildsDockerComposeService {
+    public function restart( string $restart ) {
         $this->restart = $restart;
 
         return $this;
@@ -186,7 +186,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function custom( array $custom ): BuildsDockerComposeService {
+    public function custom( array $custom ) {
         $this->custom = $custom;
 
         return $this;
@@ -197,7 +197,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function image( string $image ): BuildsDockerComposeService {
+    public function image( string $image ) {
         $this->image = $image;
 
         return $this;
@@ -208,7 +208,7 @@ trait BuildsDockerComposeService {
      *
      * @return BuildsDockerComposeService
      */
-    public function context( string $context ): BuildsDockerComposeService {
+    public function context( string $context ) {
         $this->context = $context;
 
         return $this;
