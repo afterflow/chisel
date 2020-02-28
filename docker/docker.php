@@ -28,7 +28,7 @@ Docker::network( 'backend' );
 |
 */
 
-Docker::workspace();
+Docker::workspace()->networks( [ 'frontend', 'backend' ] );
 
 /*
 |----------------------------------------------------------------------------

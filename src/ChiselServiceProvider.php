@@ -5,6 +5,7 @@ namespace Afterflow\Chisel;
 use Afterflow\Chisel\Console\Compose;
 use Afterflow\Chisel\Console\Down;
 use Afterflow\Chisel\Console\Exec;
+use Afterflow\Chisel\Console\Install;
 use Afterflow\Chisel\Console\Logs;
 use Afterflow\Chisel\Console\Ps;
 use Afterflow\Chisel\Console\Raw;
@@ -12,7 +13,6 @@ use Afterflow\Chisel\Console\Restart;
 use Afterflow\Chisel\Console\Up;
 use Afterflow\Chisel\Console\Workspace;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 
 class ChiselServiceProvider extends ServiceProvider {
@@ -22,7 +22,6 @@ class ChiselServiceProvider extends ServiceProvider {
      * @return  void
      */
     public function register() {
-
 
         if ( $this->app->runningInConsole() ) {
             $this->publishes( [
@@ -34,6 +33,7 @@ class ChiselServiceProvider extends ServiceProvider {
             Workspace::class,
             Compose::class,
             Restart::class,
+            Install::class,
             Exec::class,
             Down::class,
             Logs::class,
