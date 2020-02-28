@@ -37,7 +37,7 @@ class Up extends Command {
      */
     public function handle() {
 
-        Chisel::up();
+        Chisel::exec( 'up -d --build' );
 
     }
 }

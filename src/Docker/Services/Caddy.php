@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Afterflow\Chisel\Services;
+namespace Afterflow\Chisel\Docker\Services;
 
 
 use Illuminate\Support\Arr;

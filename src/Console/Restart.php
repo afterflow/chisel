@@ -37,8 +37,8 @@ class Restart extends Command {
      */
     public function handle() {
 
-        Chisel::exec( 'exec down' );
-        Chisel::up();
+        Chisel::exec( 'down' );
+        Chisel::exec( 'up -d --build' );
 
     }
 }

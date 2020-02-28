@@ -39,18 +39,6 @@ return [
         'port' => 3306,
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Services Configuration
-    |--------------------------------------------------------------------------
-    |
-    | This section describes local, production and common containers of your
-    | application. You can add arbitrary Docker containers or override the
-    | defaults. Section name matches environment. Add 'staging' section
-    | for staging or whatever you like to match your current env.
-    |
-    */
-
     'services' => [
 
         /*
