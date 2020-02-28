@@ -8,7 +8,7 @@ use Afterflow\Chisel\Docker\Services\Concerns\BuildsDockerComposeService;
 use Afterflow\Chisel\Docker\Services\Concerns\PublishesFixtures;
 
 class Service {
-    use BuildsDockerComposeService, PublishesFixtures;
+    use BuildsDockerComposeService;
 
     public function __construct( $image = null ) {
         if ( $image ) {

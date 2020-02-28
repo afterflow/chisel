@@ -15,6 +15,7 @@ class Chisel {
 
     public static function exec( $subcommand, $noInteraction = false ) {
 
+        static::load();
 
         // Build compose file
 
@@ -25,8 +26,6 @@ class Chisel {
 
         $compose = $docker->toCompose();
         $yaml    = Yaml::dump( $compose, 10, 2 );
-
-        //        dump( $yaml );
 
         file_put_contents( storage_path( 'framework/chisel-docker-compose.yml' ), $yaml );
 

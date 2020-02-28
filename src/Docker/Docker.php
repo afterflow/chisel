@@ -5,7 +5,7 @@ namespace Afterflow\Chisel\Docker;
 
 
 use Afterflow\Chisel\Docker\Services\Service;
-use Afterflow\Chisel\Docker\Services\Workspace;
+use Afterflow\Chisel\Docker\Services\Workspace\Workspace;
 
 class Docker {
 
@@ -34,10 +34,11 @@ class Docker {
     }
 
     public function toCompose() {
+
         $compose = [
             'version'  => '3',
             'networks' => $this->networks,
-            'services' => collect( $this->services )->map->toCompose(),
+            'services' => collect( $this->services )->map->toCompose()->toArray(),
         ];
 
         return $compose;

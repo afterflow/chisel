@@ -99,8 +99,8 @@ trait BuildsDockerComposeService {
 
         if ( $this->image ) {
             $compose[ 'image' ] = $this->image;
-        } elseif ( $this->context ) {
-            $compose[ 'context' ] = $this->context;
+        } elseif ( $this->build ) {
+            $compose[ 'build' ] = [ 'context' => $this->fixture() ];
         }
         if ( $this->env ) {
             $compose[ 'environment' ] = $this->concat( $this->env, '=' );

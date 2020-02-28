@@ -4,22 +4,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Environment Configuration
+    | Main Configuration
     |--------------------------------------------------------------------------
     |
     | Common environment configuration required by workspace and most of the
-    | other built-in containers. It's recommended to set DATA_PATH_HOST
+    | other built-in containers. It's recommended to set data_path
     | outside the project folder to keep your database safe and prevent
-    | messed up permissions.
+    | messed up permissions. data_path must be unique per project to prevent
+    | data collisions.
     |
     */
 
-    'env' => [
-        'DATA_PATH_HOST'     => env( 'CHISEL_DATA_PATH', '~/.chisel/' . basename( base_path() ) ),
-        'APP_CODE_PATH_HOST' => './',
-        'DOCKER_HOST_IP'     => '172.17.0.1',
-        'TIMEZONE'           => config( 'app.timezone' ),
-    ],
+    'data_path'      => env( 'CHISEL_DATA_PATH', '~/.chisel/' . basename( base_path() ) ),
+    'docker_host_ip' => '172.17.0.1',
 
     /*
     |--------------------------------------------------------------------------

@@ -1,20 +1,18 @@
 <?php
 
 
-namespace Afterflow\Chisel\Docker\Services\Workspace;
+namespace Afterflow\Chisel\Docker\Services\PhpFpm;
 
 
-use Afterflow\Chisel\Docker\Services\Concerns\PublishesFixtures;
+use Afterflow\Chisel\Docker\Services\Concerns\BuildsFromDockerfile;
 use Afterflow\Chisel\Docker\Services\Service;
 
-class Workspace extends Service {
+class PhpFpm extends Service {
 
-    use PublishesFixtures;
+    use BuildsFromDockerfile;
 
-    protected $image = 'exbox/workspace:4.0';
-    protected $name = 'workspace';
-    protected $networks = [ 'frontend', 'backend' ];
-    protected $custom = [ 'tty' => true ];
+    protected $name = 'php-fpm';
+    protected $networks = [ 'backend' ];
 
     public function register() {
         $this->publishesFixtures( __DIR__ . '/fixtures' );

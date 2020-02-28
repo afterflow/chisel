@@ -12,6 +12,12 @@
 */
 
 
+use Afterflow\Chisel\Docker\Services\Caddy\Caddy;
+use Afterflow\Chisel\Docker\Services\MySQL\MySQL;
+use Afterflow\Chisel\Docker\Services\PhpFpm\PhpFpm;
+use Afterflow\Chisel\Docker\Services\PhpMyAdmin\PhpMyAdmin;
+use Afterflow\Chisel\Docker\Services\Service;
+
 Docker::network( 'frontend' );
 Docker::network( 'backend' );
 
@@ -42,4 +48,8 @@ Docker::workspace()->networks( [ 'frontend', 'backend' ] );
 |
 */
 
-//Docker::service( 'php-fpm' );
+Docker::service( 'caddy', Caddy::make() );
+Docker::service( 'php-fpm', PhpFpm::make() );
+Docker::service( 'mysql', MySQL::make() );
+Docker::service( 'phpmyadmin', PhpMyAdmin::make() );
+Docker::service( 'browserless', Service::make( 'browserless/chrome' )->networks( [ 'frontend', 'backend' ] ) );
