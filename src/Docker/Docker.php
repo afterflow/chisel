@@ -33,8 +33,19 @@ class Docker {
         return $this->services;
     }
 
-    public function service( string $name, Service $service ) {
+    public function image( string $name, string $image ) {
+        return $this->service( $name, Service::make( $image ) );
+
+    }
+
+    public function service( string $name, $service ) {
+        if ( ! $service instanceof Service ) {
+            $service = new $service();
+        }
+
         $this->services[ $name ] = $service->name( $name );
+
+        return $service;
     }
 
     public function toCompose() {

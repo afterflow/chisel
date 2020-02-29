@@ -5,12 +5,12 @@ namespace Afterflow\Chisel\Docker\Services\PhpFpm;
 
 
 use Afterflow\Chisel\Docker\Services\Concerns\BuildsFromDockerfile;
+use Afterflow\Chisel\Docker\Services\Concerns\PublishesFixtures;
 use Afterflow\Chisel\Docker\Services\Service;
 
 class PhpFpm extends Service {
 
-    use BuildsFromDockerfile;
-
+    use PublishesFixtures;
     protected $name = 'php-fpm';
     protected $networks = [ 'backend' ];
 

@@ -113,7 +113,7 @@ trait BuildsDockerComposeService {
 
         if ( $this->image ) {
             $compose[ 'image' ] = $this->image;
-        } elseif ( $this->build ) {
+        } elseif ( file_exists( $this->fixture( 'Dockerfile' ) ) ) {
             $compose[ 'build' ] = [ 'context' => $this->fixture() ];
         }
         if ( $this->env ) {

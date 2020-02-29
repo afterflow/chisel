@@ -5,11 +5,12 @@ namespace Afterflow\Chisel\Docker\Services\PhpMyAdmin;
 
 
 use Afterflow\Chisel\Docker\Services\Concerns\BuildsFromDockerfile;
+use Afterflow\Chisel\Docker\Services\Concerns\PublishesFixtures;
 use Afterflow\Chisel\Docker\Services\Service;
 
 class PhpMyAdmin extends Service {
 
-    use BuildsFromDockerfile;
+    use PublishesFixtures;
 
     protected $name = 'phpmyadmin';
     protected $networks = [ 'frontend', 'backend' ];

@@ -48,8 +48,9 @@ Docker::workspace()->networks( [ 'frontend', 'backend' ] );
 |
 */
 
-Docker::service( 'caddy', Caddy::make() );
-Docker::service( 'php-fpm', PhpFpm::make() );
-Docker::service( 'mysql', MySQL::make() );
-Docker::service( 'phpmyadmin', PhpMyAdmin::make() );
-Docker::service( 'browserless', Service::make( 'browserless/chrome' )->networks( [ 'frontend', 'backend' ] ) );
+Docker::service( 'caddy', Caddy::class );
+Docker::service( 'php-fpm', PhpFpm::class );
+Docker::service( 'mysql', MySQL::class );
+Docker::service( 'phpmyadmin', PhpMyAdmin::class );
+
+Docker::image( 'browserless', 'browserless/chrome' )->networks( [ 'frontend', 'backend' ] )->ports( [ 3000 => 3000 ] );

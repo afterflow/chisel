@@ -5,11 +5,12 @@ namespace Afterflow\Chisel\Docker\Services\MySQL;
 
 
 use Afterflow\Chisel\Docker\Services\Concerns\BuildsFromDockerfile;
+use Afterflow\Chisel\Docker\Services\Concerns\PublishesFixtures;
 use Afterflow\Chisel\Docker\Services\Service;
 
 class MySQL extends Service {
 
-    use BuildsFromDockerfile;
+    use PublishesFixtures;
 
     protected $name = 'mysql';
     protected $networks = [ 'backend' ];
