@@ -63,7 +63,7 @@ class ShellCommand {
 
     public function execInteractive() {
 
-        if ( $this->isSh() && extension_loaded( 'pcntl' ) ) {
+        if ( extension_loaded( 'pcntl' ) ) {
             return $this->execPcntl();
         }
 
