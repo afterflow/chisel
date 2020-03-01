@@ -17,6 +17,12 @@ class MySQL extends Service {
 
     protected $ports = [ 3306 => 3306 ];
 
+    public function shortcuts() {
+        return [
+            '@dump' => 'mysqldump -uroot laravel > laravel.sql',
+        ];
+    }
+
 
     public function register() {
         $this->publishesFixtures( __DIR__ . '/fixtures' );
@@ -32,6 +38,7 @@ class MySQL extends Service {
             'MYSQL_ALLOW_EMPTY_PASSWORD' => true,
             'TZ'                         => config( 'app.timezone' ),
         ] )->volumes( [
+            base_path()                                    => '/var/www',
             chisel_project_data_path( 'mysql' )            => '/var/lib/mysql',
             $this->fixture( 'docker-entrypoint-initdb.d' ) => '/docker-entrypoint-initdb.d',
         ] );

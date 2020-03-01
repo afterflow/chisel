@@ -12,7 +12,7 @@ class Workspace extends Command {
      *
      * @var string
      */
-    protected $signature = 'chisel:workspace';
+    protected $signature = 'chisel:workspace {--root}';
 
     /**
      * The console command description.
@@ -37,7 +37,7 @@ class Workspace extends Command {
      */
     public function handle() {
 
-        Chisel::exec( 'exec workspace bash', false );
+        Chisel::exec( 'exec --user ' . ( $this->option( 'root' ) ? 'root' : 'laradock' ) . ' workspace bash', false );
 
         //        `$compiledString`;
 

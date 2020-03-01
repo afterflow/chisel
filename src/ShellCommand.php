@@ -50,9 +50,20 @@ class ShellCommand {
         return proc_close( $process );
     }
 
+    public function isSh() {
+        return in_array( $this->getCommand()[ 0 ], [
+            'sh',
+            'ash',
+            'bash',
+
+            'zsh',
+            'fish',
+        ] );
+    }
+
     public function execInteractive() {
 
-        if ( extension_loaded( 'pcntl' ) ) {
+        if ( $this->isSh() && extension_loaded( 'pcntl' ) ) {
             return $this->execPcntl();
         }
 

@@ -22,6 +22,21 @@ class Service {
         return $this->configure();
     }
 
+    public function shortcuts() {
+        return [];
+    }
+
+    public function shortcut( $name ) {
+        if ( ! isset( $this->shortcuts()[ $name ] ) ) {
+            return $name;
+        }
+
+        $expanded = $this->shortcuts()[ $name ];
+
+        return $expanded;
+
+    }
+
     public function state() {
         $dockerName = basename( base_path() ) . '_' . $this->name . '_1';
         $r          = `docker ps -f name=$dockerName`;
@@ -31,7 +46,7 @@ class Service {
         $r = preg_split( '~\s{2,1000}~ims', $r );
 
         //        dd($r);
-        return ($f = Arr::get( $r, 4, false ) ) ? '<fg=green>'.$f.'</>' : '<fg=red>Down</>';
+        return ( $f = Arr::get( $r, 4, false ) ) ? '<fg=green>' . $f . '</>' : '<fg=red>Down</>';
         //        $r = array_pop($r);
         //        dd($r);
     }

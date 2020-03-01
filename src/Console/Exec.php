@@ -36,6 +36,20 @@ class Exec extends Command {
      * @return mixed
      */
     public function handle() {
-        Chisel::exec( 'exec ' . ( $this->option( 'no-interaction' ) ? '-T ' : '' ) . $this->argument( 'container' ) . ' ' . $this->argument( 'cmd' ), $this->option( 'no-interaction' ) );
+
+        $exec = [ 'exec' ];
+
+        if ( $this->option( 'no-interaction' ) ) {
+            $exec[] = '-T';
+        }
+
+        $command   = $this->argument( 'cmd' );
+        $container = $this->argument( 'container' );
+        Chisel::load();
+        $command = app( 'docker' )->getService( $container )->shortcut( $command );
+        $exec [] = $container;
+        $exec [] = $command;
+
+        Chisel::exec( $exec, $this->option( 'no-interaction' ) );
     }
 }

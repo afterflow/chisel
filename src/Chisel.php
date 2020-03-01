@@ -11,12 +11,17 @@ class Chisel {
 
     public static function load() {
         self::requireConfiguration();
-        return app('docker')->services();
+
+        return app( 'docker' )->services();
     }
 
     public static function exec( $subcommand, $noInteraction = false ) {
 
         static::load();
+
+        //        dump($subcommand);
+
+        $subcommand = is_array( $subcommand ) ? $subcommand : ShellCommand::fromString( $subcommand )->getCommand();
 
         // Build compose file
 
@@ -32,7 +37,7 @@ class Chisel {
 
         // Build command
         $base_command = self::generateBaseCommand();
-        $command      = array_merge( $base_command, ShellCommand::fromString( $subcommand )->getCommand() );
+        $command      = array_merge( $base_command, $subcommand );
 
         return ( new ShellCommand( $command ) )->exec( ! $noInteraction );
 
