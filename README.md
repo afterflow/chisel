@@ -9,9 +9,9 @@ Vessel by Chris Fidao is a nice little wrapper around docker-compose. It's writt
 Extending behind basic containers is done through editing docker-compose file.
 
 Chisel is written on PHP and defines it's services using php classes (still relying on docker-compose under the hood).
-In Chisel, the project configuration is defined with PHP in `docker/docker.php`. 
-You can easily extend or reconfigure services with PHP, You can also ship some Chisel Service classes with your composer package or reuse them when scaffolding new projects.
-Chisel's @shortcut commands are inspired from Vessel.
+In Chisel, the project configuration is defined in `docker/docker.php`. 
+You can easily extend or reconfigure services, and now you can also ship some Chisel Service classes with your composer package or reuse them when scaffolding new projects.
+Chisel's `@shortcut` commands are inspired from Vessel.
 
 ### Differences from Laradock
 
@@ -45,7 +45,7 @@ php artisan chisel:up
 
 Done! You have a Caddy Web server at http://localhost, phpMyAdmin at http://localhost:8080.
 
-MySQL, Queue Worker and Schedule are runner running on background.
+MySQL, Queue Worker and Workspace with cron are running on background.
 
 Try to migrate the database from your host machine:
 
