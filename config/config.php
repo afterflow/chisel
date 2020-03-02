@@ -2,7 +2,6 @@
 
 return [
 
-
     /*
     |--------------------------------------------------------------------------
     | Main Configuration
@@ -17,7 +16,8 @@ return [
     */
 
     'sudo'           => true,
-    'data_path'      => env( 'CHISEL_DATA_PATH', '~/.chisel/' . basename( base_path() ) ),
+    'project_name'   => env( 'CHISEL_PROJECT_NAME', basename( base_path() ) ),
+    'data_path'      => env( 'CHISEL_DATA_PATH', '~/.chisel/' . config( 'chisel.project_name' ) ),
     'docker_host_ip' => '172.17.0.1',
 
     /*
@@ -35,7 +35,7 @@ return [
 
     'database_connection_override' => [
         'host' => 'mysql',
-        'port' => 3306,
+        'port' => env( 'DB_PORT', '3306' ),
     ],
 
 ];

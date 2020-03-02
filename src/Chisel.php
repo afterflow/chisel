@@ -20,8 +20,6 @@ class Chisel {
 
         static::load();
 
-        //        dump($subcommand);
-
         // Build compose file
 
         /**
