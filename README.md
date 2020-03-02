@@ -74,7 +74,7 @@ Execute a shortcut command:
 php artisan chisel:exec mysql @dump
 ```
 
-## Coniguration
+## Configuration
 
 Run the following command to publish everything:
 ```bash
