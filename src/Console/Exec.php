@@ -37,19 +37,29 @@ class Exec extends Command {
      */
     public function handle() {
 
-        $exec = [ 'exec' ];
+        $exec = 'exec';
 
-        if ( $this->option( 'no-interaction' ) ) {
-            $exec[] = '-T';
+
+        $no_interaction = $this->option( 'no-interaction' );
+
+        if ( $no_interaction ) {
+            $exec .= ' -T';
         }
 
         $command   = $this->argument( 'cmd' );
         $container = $this->argument( 'container' );
-        Chisel::load();
-        $command = app( 'docker' )->getService( $container )->shortcut( $command );
-        $exec [] = $container;
-        $exec [] = $command;
+        $resolved  = app( 'docker' )->getService( $container )->shortcut( $command );
 
-        Chisel::exec( $exec, $this->option( 'no-interaction' ) );
+        if ( $resolved == $command ) {
+            $resolved2 = app( 'docker' )->getService( $container )->shortcut( 'tty:' . $command );
+            if ( ( $resolved2 != $command ) && ( $resolved2 != ( 'tty:' . $command ) ) ) {
+                $no_interaction = false;
+                $resolved       = $resolved2;
+            } else {
+            }
+        }
+        $exec .= ' ' . $container . ' ' . $resolved;
+
+        Chisel::exec( $exec, $no_interaction );
     }
 }

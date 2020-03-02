@@ -2,6 +2,7 @@
 
 return [
 
+
     /*
     |--------------------------------------------------------------------------
     | Main Configuration
@@ -15,6 +16,7 @@ return [
     |
     */
 
+    'sudo'           => true,
     'data_path'      => env( 'CHISEL_DATA_PATH', '~/.chisel/' . basename( base_path() ) ),
     'docker_host_ip' => '172.17.0.1',
 

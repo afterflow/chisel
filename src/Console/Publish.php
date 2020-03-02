@@ -42,7 +42,7 @@ class Publish extends Command {
      */
     public function handle() {
 
-        $services = Chisel::load();
+        //        $services = Chisel::load();
 
         if ( ! $name = $this->argument( 'service' ) ) {
 

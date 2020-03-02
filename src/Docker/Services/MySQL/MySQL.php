@@ -19,7 +19,8 @@ class MySQL extends Service {
 
     public function shortcuts() {
         return [
-            '@dump' => 'mysqldump -uroot laravel > laravel.sql',
+            'tty:@dump' => 'mysqldump -uroot laravel > laravel.sql',
+            '@ls'       => 'ls -la; pwd',
         ];
     }
 

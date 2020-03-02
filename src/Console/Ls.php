@@ -7,13 +7,13 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Symfony\Component\Process\Process;
 
-class Main extends Command {
+class Ls extends Command {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'chisel';
+    protected $signature = 'chisel:list';
 
     /**
      * The console command description.

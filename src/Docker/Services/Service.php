@@ -38,8 +38,9 @@ class Service {
     }
 
     public function state() {
+        $sudostr    = config( 'chisel.sudo' ) ? 'sudo ' : '';
         $dockerName = basename( base_path() ) . '_' . $this->name . '_1';
-        $r          = `docker ps -f name=$dockerName`;
+        $r          = `$sudostr docker ps -f name=$dockerName`;
         $r          = explode( PHP_EOL, $r );
         array_shift( $r );
         $r = array_shift( $r );

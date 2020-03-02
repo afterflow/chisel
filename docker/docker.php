@@ -53,4 +53,4 @@ Docker::service( 'php-fpm', PhpFpm::class );
 Docker::service( 'mysql', MySQL::class );
 Docker::service( 'phpmyadmin', PhpMyAdmin::class );
 
-Docker::image( 'browserless', 'browserless/chrome' )->networks( [ 'frontend', 'backend' ] )->ports( [ 3000 => 3000 ] );
+//Docker::image( 'browserless', 'browserless/chrome' )->networks( [ 'frontend', 'backend' ] )->ports( [ 3000 => 3000 ] );

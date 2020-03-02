@@ -5,6 +5,7 @@ namespace Afterflow\Chisel;
 
 
 use Afterflow\Chisel\Docker\Docker;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Yaml\Yaml;
 
 class Chisel {
@@ -21,8 +22,6 @@ class Chisel {
 
         //        dump($subcommand);
 
-        $subcommand = is_array( $subcommand ) ? $subcommand : ShellCommand::fromString( $subcommand )->getCommand();
-
         // Build compose file
 
         /**
@@ -37,9 +36,18 @@ class Chisel {
 
         // Build command
         $base_command = self::generateBaseCommand();
-        $command      = array_merge( $base_command, $subcommand );
+        $command      = $base_command . ' ' . $subcommand;
 
-        return ( new ShellCommand( $command ) )->exec( ! $noInteraction );
+        if ( config( 'chisel.sudo' ) ) {
+            $command = 'sudo ' . $command;
+        }
+
+        $p = Process::fromShellCommandline( $command, base_path() )->setTty( ! $noInteraction && Process::isTtySupported() );
+        $p->run( function ( $o, $e ) {
+            // only works without TTY
+            echo( $e );
+        } );
+        //        return ( new ShellCommand( $command ) )->exec( ! $noInteraction );
 
     }
 
@@ -52,19 +60,10 @@ class Chisel {
     }
 
     /**
-     * @return array
+     * @return string
      */
-    protected static function generateBaseCommand(): array {
-        $command = [
-            '/usr/bin/sudo',
-            'docker-compose',
-            '--project-dir',
-            base_path(),
-            '-f',
-            storage_path( 'framework/chisel-docker-compose.yml' ),
-        ];
-
-        return $command;
+    protected static function generateBaseCommand(): string {
+        return 'docker-compose --project-dir ' . base_path() . ' -f ' . storage_path( 'framework/chisel-docker-compose.yml' );
     }
 
 }
