@@ -18,7 +18,7 @@ Chisel's `@shortcut` commands are inspired from Vessel.
 Laradock is all-in-one all-transparent all-purpose collection of Docker images for Laravel. In fact, Chisel is using some of it's developments but in a slightly opinionated way.
 
 Because of the nature of Laradock's images, build times may be really big and you would need to build and publish intermediate images to make this work with multiple projects/servers.
-Also, configuring Laradock might get a little overwhelming. Instead, you can build and image with Laradock and then use it with Chisel.
+Also, configuring Laradock might get a little overwhelming. Instead, you can build an image with Laradock and then use it with Chisel.
 
 ## Requirements
 
