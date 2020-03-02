@@ -1,24 +1,8 @@
-# Chisel
-
 Work In Progress. This means that the API may change at any time.
 
-### Differences from Vessel
+# Afterflow Chisel
 
-Vessel by Chris Fidao is a nice little wrapper around docker-compose. It's written in bash and doesn't require php to be installed on local machine.
-
-Extending behind basic containers is done through editing docker-compose file.
-
-Chisel is written on PHP and defines it's services using php classes (still relying on docker-compose under the hood).
-In Chisel, the project configuration is defined in `docker/docker.php`. 
-You can easily extend or reconfigure services, and now you can also ship some Chisel Service classes with your composer package or reuse them when scaffolding new projects.
-Chisel's `@shortcut` commands are inspired from Vessel.
-
-### Differences from Laradock
-
-Laradock is all-in-one all-transparent all-purpose collection of Docker images for Laravel. In fact, Chisel is using some of it's developments but in a slightly opinionated way.
-
-Because of the nature of Laradock's images, build times may be really big and you would need to build and publish intermediate images to make this work with multiple projects/servers.
-Also, configuring Laradock might get a little overwhelming. Instead, you can build an image with Laradock and then use it with Chisel.
+Chisel is a lightweight, extensible docker compose wrapper written in PHP.
 
 ## Requirements
 
@@ -47,11 +31,54 @@ Done! You have a Caddy Web server at http://localhost, phpMyAdmin at http://loca
 
 MySQL, Queue Worker and Workspace with cron are running on background.
 
+
+### Chisel vs Vessel
+
+Vessel by Chris Fidao is a nice little wrapper around docker-compose. It's written in bash and doesn't require php to be installed on local machine.
+
+Extending behind basic containers is done through editing docker-compose file.
+
+Chisel defines it's services using php classes (still relying on docker-compose under the hood).
+In Chisel, the project configuration is defined in `docker/docker.php`. 
+You can easily extend or reconfigure services, and now you can also ship some Chisel Service classes with your composer package or reuse them when scaffolding new projects.
+
+### Chisel vs Laradock
+
+Laradock is all-in-one all-transparent all-purpose collection of Docker images for Laravel. In fact, Chisel is using some of it's developments but in a slightly opinionated way.
+
+Because of the nature of Laradock's images, build times may be really big and you would need to build and publish intermediate images to make this work with multiple projects/servers.
+Also, configuring Laradock might get a little overwhelming. Instead, you can build an image with Laradock and then use it with Chisel.
+
+### Chisel vs Laravel Valet
+
+Docker on Mac uses slow virtualization and hence, native server software runs faster than dockerized version. Because of this, you might prefer using Valet for the Web stack. Chisel will still be helpful though. For example, you can run Browserless or Redis or Kibana with Chisel and everything else with Valet / native.
+
+### Chisel vs Laravel Homestead
+
+Ideally, Chisel should be used over Homestead in all cases. The goal of Chisel is to provide the same level of convenience Homestead provides, but with a production-ready Docker environment and much better extensibility.
+
+### Chisel vs docker-compose
+
+Currently, Chisel is using docker-compose under the hood, providing another level of abstraction to make compose configurable with PHP, and hence, extensible through Composer packages.
+
+Using Chisel over Compose just makes scaffolding easier and faster when using on multiple projects on multiple servers, because you can just `composer require` everything you need without the need to bundle compose files and copy/paste them over and over into new projects.
+
+## Basic Usage Examples
+
 Try to migrate the database from your host machine:
 
 ```bash
-php artisan migrate:fresh --seed
+php artisan migrate
 ```
+
+Same but from inside dockerized workspace
+
+```bash
+php artisan chisel exec workspace migrate
+```
+
+Notice how it just works with MySQL smoothly out of the box from both host machine and container with a single default `.env` file.
+
 Compile frontend assets from workspace container:
 ```bash
 php artisan chisel:workspace
