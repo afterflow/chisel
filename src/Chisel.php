@@ -45,7 +45,6 @@ class Chisel {
             // only works without TTY
             echo( $e );
         } );
-        //        return ( new ShellCommand( $command ) )->exec( ! $noInteraction );
 
     }
 
