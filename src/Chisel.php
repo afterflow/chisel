@@ -40,7 +40,9 @@ class Chisel {
             $command = 'sudo ' . $command;
         }
 
-        $p = Process::fromShellCommandline( $command, base_path() )->setTty( ! $noInteraction && Process::isTtySupported() );
+        $p = Process::fromShellCommandline( $command, base_path() )
+                    ->setTimeout( null )
+                    ->setTty( ! $noInteraction && Process::isTtySupported() );
         $p->run( function ( $o, $e ) {
             // only works without TTY
             echo( $e );
