@@ -33,9 +33,9 @@ return [
     |
     */
 
-    'database_connection_override' => [
-        'host' => 'mysql',
-        'port' => env( 'DB_PORT', '3306' ),
-    ],
+    //    'database_connection_override' => [
+    //        'host' => 'mysql',
+    //        'port' => env( 'DB_PORT', '3306' ),
+    //    ],
 
 ];

@@ -35,7 +35,6 @@ class ChiselServiceProvider extends ServiceProvider {
     }
 
     public function runningInDocker() {
-
         return @file_exists( '/.dockerenv' );
     }
 
@@ -69,17 +68,17 @@ class ChiselServiceProvider extends ServiceProvider {
 
         $this->mergeConfigFrom( __DIR__ . '/../config/config.php', 'chisel' );
 
-        $ovi = config( 'chisel.database_connection_override' );
-
-        if ( $this->runningInDocker() && $ovi ) {
-            $conn = DB::getDefaultConnection();
-            $cn   = config( 'database.connections.' . $conn );
-
-            $new = array_replace( $cn, $ovi );
-
-            config( [ 'database.connections.chisel' => $new ] );
-            DB::setDefaultConnection( 'chisel' );
-        }
+        //        $ovi = config( 'chisel.database_connection_override' );
+        //
+        //        if ( $this->runningInDocker() && $ovi ) {
+        //            $conn = DB::getDefaultConnection();
+        //            $cn   = config( 'database.connections.' . $conn );
+        //
+        //            $new = array_replace( $cn, $ovi );
+        //
+        //            config( [ 'database.connections.chisel' => $new ] );
+        //            DB::setDefaultConnection( 'chisel' );
+        //        }
 
         Chisel::load();
     }

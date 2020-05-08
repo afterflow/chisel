@@ -18,12 +18,21 @@ class MySQL extends Service {
     protected $ports = [ 3306 => 3306 ];
 
     public function shortcuts() {
+        $p = config( 'database.connections.mysql.password' );
+
         return [
-            'tty:@dump' => 'mysqldump -uroot laravel > laravel.sql',
-            '@ls'       => 'ls -la; pwd',
+            'tty:@backup' => 'mysqldump -u'
+                             . config( 'database.connections.mysql.username' )
+                             . ( $p ? ' -p' . $p : '' )
+                             . ' ' . config( 'database.connections.mysql.database' )
+                             . ' > dump.sql',
+            '@restore'    => 'mysql -u'
+                             . config( 'database.connections.mysql.username' )
+                             . ( $p ? ' -p' . $p : '' )
+                             . ' ' . config( 'database.connections.mysql.database' )
+                             . ' < dump.sql',
         ];
     }
-
 
     public function register() {
         $this->publishesFixtures( __DIR__ . '/fixtures' );
@@ -33,8 +42,8 @@ class MySQL extends Service {
 
         return $this->env( [
             'MYSQL_DATABASE'             => 'laravel',
-            'MYSQL_USER'                 => 'root',
-            'MYSQL_PASSWORD'             => '',
+            'MYSQL_USER'                 => config( 'database.connections.mysql.username' ),
+            'MYSQL_PASSWORD'             => config( 'database.connections.mysql.password' ),
             'MYSQL_ROOT_PASSWORD'        => '',
             'MYSQL_ALLOW_EMPTY_PASSWORD' => true,
             'TZ'                         => config( 'app.timezone' ),

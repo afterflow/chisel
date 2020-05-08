@@ -184,6 +184,12 @@ trait BuildsDockerComposeService {
         return $this;
     }
 
+    public function addVolumes( array $volumes ) {
+        $this->volumes [] = $volumes;
+
+        return $this;
+    }
+
     /**
      * @param array $ports
      *
