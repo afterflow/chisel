@@ -41,7 +41,7 @@ class Chisel {
         }
 
         $p = Process::fromShellCommandline( $command, base_path() )
-                    ->setTimeout( null )
+                    ->setTimeout( 9000 )
                     ->setTty( ! $noInteraction && Process::isTtySupported() );
         $p->run( function ( $o, $e ) {
             // only works without TTY
