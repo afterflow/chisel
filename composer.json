@@ -13,7 +13,10 @@
     "autoload": {
         "psr-4": {
             "Afterflow\\Chisel\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
