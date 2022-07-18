@@ -1,4 +1,4 @@
-FROM exbox/php-fpm:4.0-beta
+FROM exbox/php-fpm:5.0
 
 ADD ./www.conf /usr/local/etc/php-fpm.d/
 ADD ./php.ini /usr/local/etc/php/php.ini

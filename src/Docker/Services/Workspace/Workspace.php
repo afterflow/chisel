@@ -11,7 +11,7 @@ class Workspace extends Service {
 
     use PublishesFixtures;
 
-    protected $image = 'exbox/workspace:4.0';
+    protected $image = 'exbox/workspace:5.0';
     protected $name = 'workspace';
     protected $networks = [ 'frontend', 'backend' ];
     protected $custom = [ 'tty' => true ];
