@@ -3,6 +3,7 @@
 namespace Afterflow\Chisel\Console;
 
 use Afterflow\Chisel\Chisel;
+use Afterflow\Chisel\Docker\Docker;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 
@@ -60,6 +61,7 @@ class Exec extends Command {
         }
         $exec .= ' ' . $container . ' ' . $resolved;
 
-        Chisel::exec( $exec, $no_interaction );
+//        dump($exec);
+        Docker::exec( $exec, $no_interaction );
     }
 }

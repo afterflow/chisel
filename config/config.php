@@ -1,5 +1,6 @@
 <?php
 
+$projectName =  env( 'CHISEL_PROJECT_NAME', basename( base_path() ) );
 return [
 
     /*
@@ -16,8 +17,8 @@ return [
     */
 
     'sudo'           => true,
-    'project_name'   => env( 'CHISEL_PROJECT_NAME', basename( base_path() ) ),
-    'data_path'      => env( 'CHISEL_DATA_PATH', '~/.chisel/' . config( 'chisel.project_name' ) ),
+    'project_name'   => $projectName,
+    'data_path'      => env( 'CHISEL_DATA_PATH', '~/.chisel/' . $projectName ),
     'docker_host_ip' => '172.17.0.1',
 
     /*

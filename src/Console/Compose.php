@@ -2,7 +2,7 @@
 
 namespace Afterflow\Chisel\Console;
 
-use Afterflow\Chisel\Chisel;
+use Afterflow\Chisel\Docker\Docker;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 
@@ -37,7 +37,7 @@ class Compose extends Command {
      */
     public function handle() {
 
-        Chisel::exec( $this->argument( 'cmd' ), $this->option( 'no-interaction' ) );
+        Docker::exec( $this->argument( 'cmd' ), $this->option( 'no-interaction' ) );
 
     }
 }

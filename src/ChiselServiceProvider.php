@@ -34,9 +34,9 @@ class ChiselServiceProvider extends ServiceProvider {
 
     }
 
-    public function runningInDocker() {
-        return @file_exists( '/.dockerenv' );
-    }
+    //    public function runningInDocker() {
+    //        return @file_exists( '/.dockerenv' );
+    //    }
 
     /**
      * Bootstrap services.
@@ -62,7 +62,7 @@ class ChiselServiceProvider extends ServiceProvider {
             Logs::class,
             Raw::class,
             Up::class,
-            Ps::class,
+            //            Ps::class,
             Ls::class,
         ] );
 
@@ -80,6 +80,6 @@ class ChiselServiceProvider extends ServiceProvider {
         //            DB::setDefaultConnection( 'chisel' );
         //        }
 
-        Chisel::load();
+        Docker::load();
     }
 }

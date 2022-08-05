@@ -1,4 +1,4 @@
-FROM phpmyadmin/phpmyadmin:edge
+FROM phpmyadmin/phpmyadmin:5.1
 # Add volume for sessions to allow session persistence
 VOLUME /sessions
 # We expose phpMyAdmin on port 80

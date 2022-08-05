@@ -3,6 +3,7 @@
 namespace Afterflow\Chisel\Console;
 
 use Afterflow\Chisel\Chisel;
+use Afterflow\Chisel\Docker\Docker;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
@@ -42,7 +43,7 @@ class Publish extends Command {
      */
     public function handle() {
 
-        $services = Chisel::load();
+        $services = Docker::load();
 
         if ( ! $name = $this->argument( 'service' ) ) {
 

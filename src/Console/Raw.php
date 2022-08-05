@@ -3,6 +3,7 @@
 namespace Afterflow\Chisel\Console;
 
 use Afterflow\Chisel\Chisel;
+use Afterflow\Chisel\Docker\Docker;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 
@@ -37,6 +38,6 @@ class Raw extends Command {
      * @return mixed
      */
     public function handle() {
-        echo Chisel::compile( $this->argument( 'cmd' ),true );
+        echo Docker::compile( $this->argument( 'cmd' ),true );
     }
 }

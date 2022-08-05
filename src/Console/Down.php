@@ -3,6 +3,7 @@
 namespace Afterflow\Chisel\Console;
 
 use Afterflow\Chisel\Chisel;
+use Afterflow\Chisel\Docker\Docker;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 
@@ -37,7 +38,7 @@ class Down extends Command {
      */
     public function handle() {
 
-        Chisel::exec( 'down' );
+        Docker::exec( 'down' );
 
     }
 }
